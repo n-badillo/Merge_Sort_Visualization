@@ -1,0 +1,11 @@
+:root{
+    --btn-color: #0090f0;
+}
+
+.btn{
+    background-color: var(--btn-color);
+    color: white;
+    border-radius: 3px;
+    padding: 5px 10px;
+    border-color: transparent;
+}
