@@ -10,15 +10,19 @@ function setup(){
     tree.traverse();
 }
 
-
-function Node(val){
-    this.value = val;
-    this.left = null;
-    this.right = null;
-}
-
+/******************************
+*       TREE 
+*******************************/
 function Tree(){
     this.root = null;
+}
+
+Tree.prototype.traverse = function() {
+    this.root.visit();  // root.visit()
+}
+
+Tree.prototype.search = function(val){
+    this.root.search(val);
 }
 
 Tree.prototype.addValue = function(val) {
@@ -31,10 +35,34 @@ Tree.prototype.addValue = function(val) {
 
 }
 
-Tree.prototype.traverse = function() {
-    this.root.visit();  // root.visit()
+/******************************
+*       NODE
+*******************************/
+function Node(val){
+    this.value = val;
+    this.left = null;
+    this.right = null;
 }
 
+Node.prototype.search = function(val){
+    if(this.value == val){
+        console.log("found " + val);
+    } else if (val < this.value && this.left != null){
+        this.left.search(val);
+    }else if (val > this.value && this.right != null){
+        this.right.search(val);
+    }
+}
+
+Node.prototype.visit = function(){
+    if (this.left != null){
+        this.left.visit();
+    }
+    console.log(this.value);
+    if (this.right != null){
+        this.right.visit();
+    }
+}
 
 Node.prototype.addNode = function(n){
     if (n.value < this.value){
@@ -49,15 +77,5 @@ Node.prototype.addNode = function(n){
         } else {
             this.right.addNode(n); 
         }
-    }
-}
-
-Node.prototype.visit = function(){
-    if (this.left != null){
-        this.left.visit();
-    }
-    console.log(this.value);
-    if (this.right != null){
-        this.right.visit();
     }
 }
