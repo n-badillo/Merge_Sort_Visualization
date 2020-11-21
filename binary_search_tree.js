@@ -22,7 +22,8 @@ Tree.prototype.traverse = function() {
 }
 
 Tree.prototype.search = function(val){
-    this.root.search(val);
+    var found = this.root.search(val);
+    return found;
 }
 
 Tree.prototype.addValue = function(val) {
@@ -46,11 +47,12 @@ function Node(val){
 
 Node.prototype.search = function(val){
     if(this.value == val){
-        console.log("found " + val);
+        //console.log("found " + val);
+        return this;
     } else if (val < this.value && this.left != null){
-        this.left.search(val);
+         return this.left.search(val);
     }else if (val > this.value && this.right != null){
-        this.right.search(val);
+        return this.right.search(val);
     }
 }
 
