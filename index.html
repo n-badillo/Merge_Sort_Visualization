@@ -3,16 +3,23 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>BST Visualizer</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- Load style.css -->
         <link rel="stylesheet" href="style.css">
+  
+        <!-- Load main.js and d3.js -->
         <script src="main.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+
     </head>
     <body>
-        <input id="inputField"></input>
+        <input class="input-form" id="inputField"></input>
         <button class="btn" id="insertButton" onclick="insert_element()">Insert</button>
         <button class="btn" id="deleteButton" onclick="delete_element()">Delete</button>
+        <button class="btn" id="searchButton" onclick="search_element()">Search</button>
         <div id="displayError"></div>
         <div id="Result"></div>
         <div id="displayMoves"></div>
