@@ -1,2 +1,2 @@
-# Binary_Search_Tree_Visualization
+# Binary Search Tree Visualization
  Final Project for CPSC 335 Algorithms
