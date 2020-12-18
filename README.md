@@ -1,2 +1,2 @@
-# Binary Search Tree Visualization
+# Merge Sort Visualization
  Final Project for CPSC 335 Algorithms
