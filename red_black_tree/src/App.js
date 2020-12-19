@@ -1,10 +1,10 @@
-import BinarySearchVisualizer from './BinarySearchVisualizer/BinarySearchVisualizer';
+import MergeSortVisualizer from './MergeSortVisualizer/MergeSortVisualizer';
 import './App.css';
 
 function App() {
   return (
-  <div class="App">
-    <BinarySearchVisualizer></BinarySearchVisualizer>
+  <div className="App">
+    <MergeSortVisualizer></MergeSortVisualizer>
   </div>
   );
 }
