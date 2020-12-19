@@ -3,17 +3,19 @@ import { getMergeSortAnimation } from '../mergeSortAlgorithm/mergeSortAlgorithm.
 import './MergeSortVisualizer.css';
 
 // Speed of the animation -- a higher number means it is slower (in milliseconds).
-const ANIMATION_SPEED_MS = 500;
+const ANIMATION_SPEED_MS = 250;
 
 // Change the amount of bars shows for any random array.
 const NUMBER_OF_ARRAY_BARS = 31;
-const NUMBER_OF_MIN_BARS = 8;  // this will be for responsive layouts, smallest windo size of 322px
+const NUMBER_OF_MIN_BARS = 8;  // this will be for responsive layouts, smallest window size of 322px
 
 // The color of the bars will change to this color when they have been sorted
 const SORTED_COLOR = '#3FBCAE';
+const SORTED_FONT = 'black';
 
 // This color is the color of the bars being compared
-const COMPARE_COLOR = 'black';
+const COMPARE_COLOR = '#FF5F67';
+const COMPARE_FONT = 'white';
 
 export default class MergeSortVisualizer extends React.Component {
     constructor(props){
@@ -43,28 +45,42 @@ export default class MergeSortVisualizer extends React.Component {
     }
 
     mergeSort(){
+        console.log(this.state.array);
         const comparingAnimation = getMergeSortAnimation(this.state.array);
         for (let i = 0; i < comparingAnimation.length; i++) {
             const arrayBars = document.getElementsByClassName('array-bar');
-            const isColorChange = i % 3 !== 2;
+            const isColorChange = i % 3 !== 2;  // evaluating every triple
+
             if (isColorChange) {
-                const [barOneIdx, barTwoIdx] = comparingAnimation[i];
-                const barOneStyle = arrayBars[barOneIdx].style;
-                const barTwoStyle = arrayBars[barTwoIdx].style;
+                const [first_bar_index, second_bar_index] = comparingAnimation[i];
+                const first_bar_style = arrayBars[first_bar_index].style;
+                const second_bar_style = arrayBars[second_bar_index].style;
+
+                // change the font color of the evaluated bar
+                const first_bar_font = arrayBars[first_bar_index].style;
+                const second_bar_font = arrayBars[second_bar_index].style;
+
                 const color = i % 3 === 0 ? COMPARE_COLOR : SORTED_COLOR;
+                const font_color = i % 3 === 0 ? COMPARE_FONT : SORTED_FONT;
+
                 setTimeout(() => {
-                barOneStyle.backgroundColor = color;
-                barTwoStyle.backgroundColor = color;
+                first_bar_style.backgroundColor = color;
+                second_bar_style.backgroundColor = color;
+
+                // change the font color of the evaluated bar
+                first_bar_font.color = font_color;
+                second_bar_font.color = font_color;
                 }, i * ANIMATION_SPEED_MS);
             } else {
                 setTimeout(() => {
-                const [barOneIdx, newHeight] = comparingAnimation[i];
-                const barOneStyle = arrayBars[barOneIdx].style;
-                barOneStyle.height = `${newHeight}px`;
+                const [first_bar_index, newHeight] = comparingAnimation[i];
+                const first_bar_style = arrayBars[first_bar_index].style;
+                this.state.array[i] = newHeight;
+                first_bar_style.height = `${newHeight}px`;
                 }, i * ANIMATION_SPEED_MS);
             }
         }
-       
+    
     }
 
     render() {
@@ -77,10 +93,13 @@ export default class MergeSortVisualizer extends React.Component {
                 <div className="nav-right"><a href="https://github.com/n-badillo/Merge_Sort_Visualization" target="_blank">Project Page</a></div>
                 </div>
                 <div className="array-container">
-                {array.map((value, idx) => (
+                {array.map((number, idx) => (
                     // displaying the bars of the array
-                    <div className="array-bar" key={idx} style={{height: `${value}px`}}>
-                        {value}
+                    <div 
+                    className="array-bar" 
+                    key={idx} 
+                    style={{height: `${number}px`}}>
+                        {/* {number} */}
                     </div>
                 ))}
                 </div>
@@ -91,7 +110,8 @@ export default class MergeSortVisualizer extends React.Component {
                     </div>
                     <div className="project-info">
                         This project was created for CPSC 335 Algorithm Engineering.  Currently updating the project so that it is responsive when the window is smaller or bigger.  <br></br>
-                        There is a current bug where the number of the bar will not update, however its position does -- still working on a way to fix that. <br></br>
+                        <b>There is a current bug where the number of the bar will not update, however its position does -- still working on a way to fix that.<br></br></b>
+                        Deleting the number on the bars for the final version in case I get marked off for it :] <br></br>
                         This project was inspired by Clément Mihailescu's Sorting Visualizer.
 
                     </div>

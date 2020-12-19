@@ -16,10 +16,10 @@ export function getMergeSortAnimation(array) {
    const middle_index = Math.floor((starting_index + ending_index) / 2);
    mergeSortHelperFunction(duplicate_array, starting_index, middle_index, main_array, animations);
    mergeSortHelperFunction(duplicate_array, middle_index + 1, ending_index, main_array, animations);
-   doMerge(main_array, starting_index, middle_index, ending_index, duplicate_array, animations);
+   mergeArrays(main_array, starting_index, middle_index, ending_index, duplicate_array, animations);
   }
 
-  function doMerge(   main_array,   starting_index,   middle_index,   ending_index,   duplicate_array,   animations ) {
+  function mergeArrays(   main_array,   starting_index,   middle_index,   ending_index,   duplicate_array,   animations ) {
    let k = starting_index;
    let i = starting_index;
    let j = middle_index + 1;
