@@ -84,9 +84,17 @@ export default class MergeSortVisualizer extends React.Component {
                     </div>
                 ))}
                 </div>
-                <div className="button-bar">
-                    <button className="custom-button" onClick={() => this.resetArray()}>Generate Random Array</button>
-                    <button className="custom-button" onClick={() => this.mergeSort()}>Perform Merge Sort</button>
+                <div className="bottom-half">
+                    <div className="button-bar">
+                        <button className="custom-button" onClick={() => this.resetArray()}>Generate Random Array</button>
+                        <button className="custom-button" onClick={() => this.mergeSort()}>Merge Sort</button>
+                    </div>
+                    <div className="project-info">
+                        This project was created for CPSC 335 Algorithm Engineering.  Currently updating the project so that it is responsive when the window is smaller or bigger.  <br></br>
+                        There is a current bug where the number of the bar will not update, however its position does -- still working on a way to fix that. <br></br>
+                        This project was inspired by Clément Mihailescu's Sorting Visualizer.
+
+                    </div>
                 </div>
                 <div className="footer-bar">
                 Created by Nancy Badillo

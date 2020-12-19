@@ -46,6 +46,10 @@ input{
     padding: 5px 0;
 }
 
+.bottom-half{
+    display: flex;
+}
+
 .button-bar{
     /* missing center align on buttons*/
     margin: 15px 0px;
@@ -108,4 +112,14 @@ input{
     right: 0;
     font-size: inherit;
     letter-spacing: inherit;
+}
+
+.project-info{
+    text-align: center;
+    width: 100vw;
+    color: lightgrey;
+    font-size: 14px;
+    top: 50%;
+    margin-top: 70px;
+    padding: 2.5vh 0;
 }
